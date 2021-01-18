@@ -16,10 +16,10 @@ public class ShefaProperty extends Property {
         DEPOSITS.add(10000.0);
         DEPOSITS.add(20000.0);
 
-        this.YEAR_RATE.put(3, 7.25);
-        this.YEAR_RATE.put(5, 7.30);
-        this.YEAR_RATE.put(8, 7.37);
+        YEAR_RATE.put(3, 7.25);
+        YEAR_RATE.put(5, 7.30);
+        YEAR_RATE.put(8, 7.37);
 
-        this.TABLE_CELL_SIZE = 15;
+        TABLE_CELL_SIZE = 15;
     }
 }

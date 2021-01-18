@@ -8,7 +8,7 @@ public class DpsCalculatorMain {
 
         DpsUtils dpsUtils = new DpsUtils(packageName);
 
-        dpsUtils.showDeposits(packageName);
+        dpsUtils.showDeposits();
         System.out.print("Enter Monthly Deposit($): ");
         double monthlyDeposit = dpsUtils.getMonthlyDepositInput("Please enter numeric value");
 

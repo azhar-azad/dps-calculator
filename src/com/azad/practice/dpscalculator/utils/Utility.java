@@ -1,4 +1,4 @@
-package com.azad.practice.dpscalculator;
+package com.azad.practice.dpscalculator.utils;
 
 import java.util.Scanner;
 

@@ -1,16 +1,24 @@
-package com.azad.practice.dpscalculator;
+package com.azad.practice.dpscalculator.table;
 
-import com.azad.practice.dpscalculator.dps.DpsCalculator;
+import com.azad.practice.dpscalculator.properties.Property;
+import com.azad.practice.dpscalculator.calculator.DpsCalculator;
+import com.azad.practice.dpscalculator.properties.PropertiesFactory;
 
 public class TableBuilder {
 
-    private Properties props = new Properties();
-
+    private Property props;
     private String table;
     private String tableHeader;
     private String tableBody;
 
-    public TableBuilder() {
+    public TableBuilder(String packageName) throws ClassNotFoundException {
+        PropertiesFactory propsFactory = new PropertiesFactory();
+        props = propsFactory.getProperties(packageName);
+
+        if (props == null) {
+            throw new ClassNotFoundException("The package \"" + packageName + "\" is not found.");
+        }
+
         tableHeader = "|" + addPadding("Year") + "|" + addPadding("Rate(%)") + "|";
         tableBody = "";
         table = "";

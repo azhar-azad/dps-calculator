@@ -1,17 +1,24 @@
-package com.azad.practice.dpscalculator.dps;
+package com.azad.practice.dpscalculator.utils;
 
-import com.azad.practice.dpscalculator.Properties;
-import com.azad.practice.dpscalculator.Utility;
+import com.azad.practice.dpscalculator.properties.PropertiesFactory;
+import com.azad.practice.dpscalculator.properties.Property;
 
 public class DpsUtils {
 
-    private static Properties props = new Properties();
+    private Property props;
 
-    public static Double getRateByYear(Integer year) {
+    public DpsUtils(String packageName) {
+        PropertiesFactory propsFactory = new PropertiesFactory();
+        props = propsFactory.getProperties(packageName);
+    }
+
+    public Double getRateByYear(Integer year) {
+
         return props.getYearRate().get(year);
     }
 
-    public static void showDeposits() {
+    public void showDeposits(String packageName) {
+
         System.out.println("Available monthly deposit amounts: ");
         for (int i = 0; i < props.getDeposits().size(); i++) {
             System.out.print("| " + props.getDeposits().get(i) + " |");
@@ -19,7 +26,7 @@ public class DpsUtils {
         System.out.println();
     }
 
-    public static void showYearToInvests() {
+    public void showYearToInvests() {
         System.out.println("Available years to invest: ");
         for (Integer year: props.getYearRate().keySet()) {
             System.out.print("| " + year + " |");
@@ -27,7 +34,7 @@ public class DpsUtils {
         System.out.println();
     }
 
-    public static void showRates() {
+    public void showRates() {
         System.out.println("Available annual interest rates: ");
         for (Double rate: props.getYearRate().values()) {
             System.out.print("| " + rate + " |");
@@ -35,7 +42,7 @@ public class DpsUtils {
         System.out.println();
     }
 
-    public static double getMonthlyDepositInput(String msg) {
+    public double getMonthlyDepositInput(String msg) {
         double input = Utility.getDoubleInput(msg);
 
         if (props.getDeposits().contains(input)) {
@@ -46,7 +53,7 @@ public class DpsUtils {
         return getMonthlyDepositInput(msg);
     }
 
-    public static double getAIRInput(String msg) {
+    public double getAIRInput(String msg) {
         double input = Utility.getDoubleInput(msg);
 
         if (props.getYearRate().containsValue(input)) {
@@ -57,7 +64,7 @@ public class DpsUtils {
         return getMonthlyDepositInput(msg);
     }
 
-    public static int getYearInput(String msg) {
+    public int getYearInput(String msg) {
         int input = Utility.getIntegerInput(msg);
 
         if (props.getYearRate().containsKey(input)) {
@@ -66,5 +73,16 @@ public class DpsUtils {
 
         System.out.println("Please enter value from given choices.");
         return getYearInput(msg);
+    }
+
+    public static int getPackageInput(String msg, int totalPackageCount) {
+        int input = Utility.getIntegerInput(msg);
+
+        if (input <= totalPackageCount) {
+            return input;
+        }
+
+        System.out.println("Please enter value from given choices.");
+        return getPackageInput(msg, totalPackageCount);
     }
 }

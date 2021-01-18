@@ -1,32 +1,63 @@
 package com.azad.practice.dpscalculator;
 
-import com.azad.practice.dpscalculator.dps.DpsCalculator;
-import com.azad.practice.dpscalculator.dps.DpsUtils;
+import com.azad.practice.dpscalculator.calculator.DpsCalculatorMain;
+import com.azad.practice.dpscalculator.table.DpsTableMain;
+import com.azad.practice.dpscalculator.utils.DpsUtils;
+import com.azad.practice.dpscalculator.utils.Utility;
 
 public class Main {
 
     public static void main(String[] args) {
 
-//        DpsUtils.showDeposits();
-//        System.out.print("Enter Monthly Deposit($): ");
-//        double monthlyDeposit = DpsUtils.getMonthlyDepositInput("Please enter numeric value");
-//
-//        DpsUtils.showYearToInvests();
-//        System.out.print("Enter years to invest: ");
-//        int yearsToInvest = DpsUtils.getYearInput("Please enter integer value");
-//
-//        double annualInterestRate = DpsUtils.getRateByYear(yearsToInvest);
-//
-//        System.out.println();
-//        System.out.println();
-//
-//        DpsCalculator calculator = new DpsCalculator(monthlyDeposit, annualInterestRate, yearsToInvest);
-//        System.out.println("Total Deposits: " + calculator.getTotalDeposits());
-//        System.out.println("Future Savings: " + calculator.getFutureSavings());
-//        System.out.println("Interest Earned: " + calculator.getInterestEarned());
-//        System.out.println(calculator.getDisclosure());
+        showAvailablePackages();
+        System.out.print("Enter your choice: ");
+        int packageChoice = DpsUtils.getPackageInput("Please enter integer value", 5);
+        String packageName = getPackageNameFromChoice(packageChoice);
+        System.out.println("\"" + packageName + "\" selected.\n");
 
-        TableBuilder tb = new TableBuilder();
-        tb.printTable();
+        System.out.println("1. Calculate DPS by inputting properties (press 1)");
+        System.out.println("2. Display DPS scheme in a table (press 2)");
+        System.out.print("Enter choice: ");
+
+        int choice = Utility.getIntegerInput("Please enter integer value.");
+
+        switch (choice) {
+            case 1:
+                DpsCalculatorMain.main(args, packageName);
+                break;
+            case 2:
+                DpsTableMain.main(args, packageName);
+                break;
+
+             default:
+                 System.out.println("Invalid choice");
+        }
+    }
+
+    private static String getPackageNameFromChoice(int packageChoice) {
+        switch (packageChoice) {
+            case 1:
+                return "MMSS";
+            case 2:
+                return "SHWAPNO";
+            case 3:
+                return "SHEFA";
+            case 4:
+                return "FEMINA";
+            case 5:
+                return "SU-GRIHINI";
+            default:
+                return "INVALID";
+        }
+    }
+
+    private static void showAvailablePackages() {
+
+        System.out.println("This DPS packages are available right now.");
+        System.out.println("MMSS (press 1)");
+        System.out.println("SHWAPNO (press 2)");
+        System.out.println("SHEFA (press 3)");
+        System.out.println("FEMINA (press 4)");
+        System.out.println("SU-GRIHINI (press 5)");
     }
 }

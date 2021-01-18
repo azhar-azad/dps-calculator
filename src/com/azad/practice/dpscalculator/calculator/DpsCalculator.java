@@ -1,4 +1,4 @@
-package com.azad.practice.dpscalculator.dps;
+package com.azad.practice.dpscalculator.calculator;
 
 public class DpsCalculator {
 

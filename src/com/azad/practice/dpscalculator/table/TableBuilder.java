@@ -66,7 +66,7 @@ public class TableBuilder {
         }
         unit += "|";
         String rowSeparator = "|";
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < props.getDeposits().size() + 2; i++) {
             rowSeparator += unit;
         }
         return rowSeparator;

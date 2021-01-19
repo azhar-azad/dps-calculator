@@ -62,26 +62,27 @@ public class DpsCalculator {
             return "$" + mainPart + "." + fractionPart;
         }
 
-        String unformattedMainPart = mainPart;
-        String formattedValue = "";
+        StringBuilder unformattedMainPartBuilder = new StringBuilder(mainPart);
+        StringBuilder formattedValueBuilder = new StringBuilder();
         int part;
         for (int i = 0; i < mainPart.length(); i += part) {
 
-            if (unformattedMainPart.length() % 3 == 2) {
-                part = 2;
-            }
-            else if (unformattedMainPart.length() % 3 == 1) {
+            if (unformattedMainPartBuilder.length() % 3 == 1) {
                 part = 1;
+            }
+            else if (unformattedMainPartBuilder.length() % 3 == 2) {
+                part = 2;
             }
             else
                 part = 3;
 
-            formattedValue += unformattedMainPart.substring(0, part) + ",";
-            unformattedMainPart = unformattedMainPart.substring(part);
+            formattedValueBuilder.append(unformattedMainPartBuilder.substring(0, part)).append(",");
+            unformattedMainPartBuilder.delete(0, part);
         }
 
-        formattedValue = formattedValue.substring(0, formattedValue.length() - 1);
-        return "$" + formattedValue + "." + fractionPart;
+        formattedValueBuilder.delete(formattedValueBuilder.length()-1, formattedValueBuilder.length()); // deletes the last appended ","
+
+        return "$" + formattedValueBuilder + "." + fractionPart;
     }
 
     private double decimalRounder(double value) {

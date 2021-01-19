@@ -29,20 +29,20 @@ public class Utility {
         return getDoubleInput(msg);
     }
 
-    private static String getStringInput() {
-        return scanner.nextLine();
-    }
+//    private static String getStringInput() {
+//        return scanner.nextLine();
+//    }
     
-    private static char getCharInput(String msg) {
-    	String input = getStringInput();
-    	
-    	if (input.length() == 1) {
-    		return input.charAt(0);
-    	}
-    	
-    	System.out.println(msg);
-    	return getCharInput(msg);
-    }
+//    private static char getCharInput(String msg) {
+//    	String input = getStringInput();
+//
+//    	if (input.length() == 1) {
+//    		return input.charAt(0);
+//    	}
+//
+//    	System.out.println(msg);
+//    	return getCharInput(msg);
+//    }
 
     // Check if user input is positive-integer or not
     private static boolean isInteger(String str) {

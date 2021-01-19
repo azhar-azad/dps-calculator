@@ -21,18 +21,14 @@ public class Main {
 
         switch (choice) {
             case 1:
-                DpsCalculatorMain.main(args, packageName);
+                DpsCalculatorMain.main(packageName);
                 break;
             case 2:
-                DpsTableMain.main(args, packageName);
+                DpsTableMain.main(packageName);
                 break;
 
              default:
                  System.out.println("Invalid choice");
         }
     }
-
-
-
-
 }

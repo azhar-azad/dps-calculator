@@ -45,22 +45,28 @@ class TableBuilder {
      */
     private void buildTableHeader() {
         System.out.println(rowSeparator);
+        StringBuilder tableHeaderBuilder = new StringBuilder();
         for (Double item: props.getDeposits()) {
-            tableHeader += addPadding(item + "") + "|";
+            tableHeaderBuilder.append(addPadding(item+"")).append("|");
         }
+        tableHeader += tableHeaderBuilder.toString();
     }
 
     private void buildTableBody() {
+        StringBuilder tableBodyBuilder = new StringBuilder();
         for (Integer year: props.getYearRate().keySet()) {
             Double rate = props.getYearRate().get(year);
             String tableRow = "";
             tableRow += "|" + addPadding(year+"") + "|" + addPadding(rate+"") + "|";
+            StringBuilder tableRowBuilder = new StringBuilder();
             for (Double deposit: props.getDeposits()) {
                 DpsCalculator dc = new DpsCalculator(deposit, rate, year);
-                tableRow += addPadding(dc.getFutureSavings()) + "|";
+                tableRowBuilder.append(addPadding(dc.getFutureSavings())).append("|");
             }
-            tableBody += tableRow + "\n";
+            tableRow += tableRowBuilder.toString();
+            tableBodyBuilder.append(tableRow).append("\n");
         }
+        tableBody += tableBodyBuilder.toString();
         tableBody += rowSeparator;
     }
 
@@ -103,18 +109,18 @@ class TableBuilder {
         So for DEMO package, "rowSeparator" will be 4+2=6 cellUnit long.
         Extra 2 cellUnits are added for Year and Rate column.
          */
-        String cellUnit = "";   // cellUnit = ""
+        StringBuilder cellUnitBuilder = new StringBuilder(); // cellUnit = ""
         for (int i = 0; i < props.getTableCellSize(); i++) {
-            cellUnit += "-";
+            cellUnitBuilder.append("-");
         }   // cellUnit = "---------------"
-        cellUnit += "|";    // cellUnit = "---------------|"
+        cellUnitBuilder.append("|");    // cellUnit = "---------------|"
 
-        String rowSeparator = "|";  // rowSeparator = "|"
+        StringBuilder rowSeparatorBuilder = new StringBuilder("|");  // rowSeparator = "|"
         for (int i = 0; i < props.getDeposits().size() + 2; i++) {
-            rowSeparator += cellUnit;
+            rowSeparatorBuilder.append(cellUnitBuilder);
         }   // rowSeparator = "|---------------|---------------|---------------|---------------|---------------|---------------|"
 
-        this.rowSeparator = rowSeparator;
+        this.rowSeparator = rowSeparatorBuilder.toString();
     }
 
     private String addPadding(String cellItem) {
@@ -130,12 +136,12 @@ class TableBuilder {
          */
         int cellSize = props.getTableCellSize();
 
-        String padding = "";
+        StringBuilder paddingBuilder = new StringBuilder();
 
         for (int i = 0; i < cellSize - cellItem.length(); i++) {
-            padding += " ";
+            paddingBuilder.append(" ");
         }
 
-        return padding + cellItem;
+        return paddingBuilder + cellItem;
     }
 }

@@ -2,7 +2,7 @@ package com.azad.practice.dpscalculator.table;
 
 public class DpsTableMain {
 
-    public static void main(String[] args, String packageName) {
+    public static void main(String packageName) {
 
        try {
            TableBuilder tb = new TableBuilder(packageName);

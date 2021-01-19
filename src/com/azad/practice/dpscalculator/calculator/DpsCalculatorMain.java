@@ -4,7 +4,7 @@ import com.azad.practice.dpscalculator.utils.DpsUtils;
 
 public class DpsCalculatorMain {
 
-    public static void main(String[] args, String packageName) {
+    public static void main(String packageName) {
 
         DpsUtils dpsUtils = new DpsUtils(packageName);
 

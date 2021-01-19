@@ -4,8 +4,11 @@ public class PropertiesFactory {
 
     public Property getProperties(String packageName) {
 
-        if (packageName.equalsIgnoreCase("MMSS")) {
-            return new MmssProperty();
+        if (packageName.equalsIgnoreCase("DEMO")) {
+            return new DemoProperty();
+        }
+        else if (packageName.equalsIgnoreCase("MMSS")) {
+            return new MmssProperty ();
         }
         else if (packageName.equalsIgnoreCase("SHWAPNO") ||
                 packageName.equalsIgnoreCase("FEMINA") ||
@@ -15,7 +18,6 @@ public class PropertiesFactory {
         else if (packageName.equalsIgnoreCase("SHEFA")) {
             return new ShefaProperty();
         }
-
         return null;
     }
 }

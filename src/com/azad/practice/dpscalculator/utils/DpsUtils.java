@@ -54,15 +54,4 @@ public class DpsUtils {
         System.out.println("Please enter value from given choices.");
         return getYearInput(msg);
     }
-
-    public static int getPackageInput(String msg, int totalPackageCount) {
-        int input = Utility.getIntegerInput(msg);
-
-        if (input <= totalPackageCount) {
-            return input;
-        }
-
-        System.out.println("Please enter value from given choices.");
-        return getPackageInput(msg, totalPackageCount);
-    }
 }

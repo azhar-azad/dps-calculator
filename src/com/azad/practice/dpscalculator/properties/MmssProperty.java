@@ -2,7 +2,7 @@ package com.azad.practice.dpscalculator.properties;
 
 public class MmssProperty extends Property {
 
-    public MmssProperty() {
+    MmssProperty() {
         init();
     }
 

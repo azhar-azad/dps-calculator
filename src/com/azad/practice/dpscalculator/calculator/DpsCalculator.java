@@ -16,23 +16,29 @@ public class DpsCalculator {
         this.yearsToInvest = yearsToInvest;
     }
 
+    /*
+    PUBLIC METHODS
+     */
     public String getFutureSavings() {
         double factor = annualInterestRate / (12 * 100);
         futureSavings = getFutureSavings(monthlyDeposit, factor, yearsToInvest * 12);
         return getCurrencyFormattedValue(futureSavings);
     }
 
-    public String getTotalDeposits() {
+    /*
+    PACKAGE-PRIVATE METHODS
+     */
+    String getTotalDeposits() {
         totalDeposits = getTotalDeposits(monthlyDeposit, yearsToInvest * 12);
         return getCurrencyFormattedValue(totalDeposits);
     }
 
-    public String getInterestEarned() {
+    String getInterestEarned() {
         interestEarned = getInterestEarned(futureSavings, totalDeposits);
         return getCurrencyFormattedValue(interestEarned);
     }
 
-    public String getDisclosure() {
+    String getDisclosure() {
         return "\nIf you make regularly monthly deposits of " + getCurrencyFormattedValue(monthlyDeposit) + " for "
                 + yearsToInvest + " years (or " + yearsToInvest*12 + " months), you will earn " + getCurrencyFormattedValue(interestEarned)
                 + " in interest at a " + annualInterestRate + "% APR with interest compounded monthly.\nThis will grow "
@@ -43,7 +49,6 @@ public class DpsCalculator {
     /*
     PRIVATE METHODS
     */
-
     private String getCurrencyFormattedValue(double value) {
 
         String strValue = decimalRounder(value) + "";

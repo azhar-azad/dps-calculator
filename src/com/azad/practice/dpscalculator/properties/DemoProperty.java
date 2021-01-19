@@ -2,7 +2,7 @@ package com.azad.practice.dpscalculator.properties;
 
 public class DemoProperty extends Property {
 
-    public DemoProperty() {
+    DemoProperty() {
         init();
     }
 

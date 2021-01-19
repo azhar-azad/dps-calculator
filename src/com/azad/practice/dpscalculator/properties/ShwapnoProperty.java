@@ -2,7 +2,7 @@ package com.azad.practice.dpscalculator.properties;
 
 public class ShwapnoProperty extends Property {
 
-    public ShwapnoProperty() {
+    ShwapnoProperty() {
         init();
     }
 

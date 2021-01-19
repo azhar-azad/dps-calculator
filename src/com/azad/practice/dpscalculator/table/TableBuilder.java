@@ -43,7 +43,6 @@ class TableBuilder {
     /*
     PRIVATE METHODS
      */
-
     private void buildTableHeader() {
         System.out.println(rowSeparator);
         for (Double item: props.getDeposits()) {
@@ -66,17 +65,19 @@ class TableBuilder {
     }
 
     private void buildTableFooter() {
-        tableFooter += "All values are rounded to ";
+        tableFooter += "All values are rounded (approx.)";
     }
 
     private void buildTable() {
         table += tableHeader;
         table += "\n" + getHeaderBodySeparator() + "\n";
         table += tableBody;
+        table += "\n";
+        table += tableFooter;
     }
 
     private String getHeaderBodySeparator() {
-        StringBuilder hbSeparator = new StringBuilder("");
+        StringBuilder hbSeparator = new StringBuilder();
         for (int i = 0; i < rowSeparator.length(); i++) {
             if (rowSeparator.charAt(i) == '-') {
                 hbSeparator.append('=');

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Utility {
 
-    public static Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
     // Safe-convert user input to integer value
     public static int getIntegerInput(String msg) {
@@ -19,7 +19,7 @@ public class Utility {
     }
 
     // Safe-convert user input to double value
-    public static double getDoubleInput(String msg) {
+    static double getDoubleInput(String msg) {
         String str = scanner.nextLine();
         
         if (isDouble(str))
@@ -29,11 +29,11 @@ public class Utility {
         return getDoubleInput(msg);
     }
 
-    public static String getStringInput() {
+    private static String getStringInput() {
         return scanner.nextLine();
     }
     
-    public static char getCharInput(String msg) {
+    private static char getCharInput(String msg) {
     	String input = getStringInput();
     	
     	if (input.length() == 1) {
@@ -45,7 +45,7 @@ public class Utility {
     }
 
     // Check if user input is positive-integer or not
-    public static boolean isInteger(String str) {
+    private static boolean isInteger(String str) {
         if (str == null) {
             return false;
         }
@@ -71,7 +71,7 @@ public class Utility {
     }
 
     // Check if user input is positive-double or not
-    public static boolean isDouble(String str) {
+    private static boolean isDouble(String str) {
         if (str == null) {
             return false;
         }

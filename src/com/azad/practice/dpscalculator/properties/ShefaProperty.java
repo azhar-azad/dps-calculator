@@ -2,7 +2,7 @@ package com.azad.practice.dpscalculator.properties;
 
 public class ShefaProperty extends Property {
 
-    public ShefaProperty() {
+    ShefaProperty() {
         init();
     }
 

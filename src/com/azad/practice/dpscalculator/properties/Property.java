@@ -6,9 +6,9 @@ import java.util.List;
 
 public abstract class Property {
 
-    protected final List<Double> DEPOSITS = new ArrayList<>();
-    protected final HashMap<Integer, Double> YEAR_RATE = new HashMap<>();
-    protected int TABLE_CELL_SIZE;
+    final List<Double> DEPOSITS = new ArrayList<>();
+    final HashMap<Integer, Double> YEAR_RATE = new HashMap<>();
+    int TABLE_CELL_SIZE;
 
     public abstract void init();
 
